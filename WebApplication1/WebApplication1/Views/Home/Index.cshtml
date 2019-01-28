@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<body>
+    <text>
+        hallo, dit is de index.cshtml pagina
+        <br>
+        <br>
+        <br>
+        <asp:Button ID="playMancala" runat="server" onlick= @Html.ActionLink("start playing mancala dos", "Index", "playMancala") Start playing mancala </asp:Button>
+        <br />
+        <br />
+        <br />
+
+        @Html.ActionLink("start playing mancala dos", "Index", "playMancala");
+
+        <br>
+    </text>
+</body>
+
+@section Scripts{
+    <script type="text/javascript">
+        //any javascript code you want
+        //try to make seperate js files, then load them up here
+    </script> 
+    }

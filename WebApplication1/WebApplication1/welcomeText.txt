@@ -1,0 +1,8 @@
+﻿
+
+tutorial:
+file:///C:/Users/kvbragt/Downloads/Programming%20ASP.NET%20MVC%205.pdf
+
+het idee is om eerst de meest simpele mvc te maken,
+vervolgens de mancala toe te voegen
+
