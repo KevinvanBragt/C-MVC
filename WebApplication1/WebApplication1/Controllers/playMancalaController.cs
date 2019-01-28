@@ -9,9 +9,9 @@ namespace WebApplication1.Controllers
     public class playMancalaController : Controller
     {
         // GET: playMancala
-        public string Index()
+        public ViewResult playMancala()
         {
-            return "playMancalaController";
+            return View();
         }
     }
 }

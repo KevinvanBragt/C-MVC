@@ -3,5 +3,56 @@
     ViewBag.Title = "playMancala";
 }
 
-<h2>playMancala</h2>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="stylesheet" type="text/css" href="~/Scripts/mancalyStyleSheet.css" media="screen">
 
+<html lang="en">
+
+<head>
+    <title> Mancala </title>
+</head>
+
+<body>
+    
+
+    <br><br><br><br>
+    <div class="board">
+        <div class="section endsection">
+            <div class="kalaha" id="mb"> 13 </div>
+        </div>
+
+        <div class="section midsection">
+            <div class="midrow topmid">
+                <div class="pitt" id="pt1"><a href="controller.do?action=makeMove&cup=13"> 12 </a></div>
+                <div class="pitt" id="pt2"><a href="controller.do?action=makeMove&cup=12"> 11 </a></div>
+                <div class="pitt" id="pt3"><a href="controller.do?action=makeMove&cup=11"> 10 </a></div>
+                <div class="pitt" id="pt4"><a href="controller.do?action=makeMove&cup=10"> 9 </a></div>
+                <div class="pitt" id="pt5"><a href="controller.do?action=makeMove&cup=9"> 8 </a></div>
+                <div class="pitt" id="pt6"><a href="controller.do?action=makeMove&cup=8"> 7 </a></div>
+            </div>
+
+            <div class="midrow botmid">
+                <div class="pitt" id="pb6"><a href="controller.do?action=makeMove&cup=1"> 0 </a></div>
+                <div class="pitt" id="pb5"><a href="controller.do?action=makeMove&cup=2"> 1 </a></div> 
+                <div class="pitt" id="pb4"><a href="controller.do?action=makeMove&cup=3"> 2 </a></div>
+                <div class="pitt" id="pb3"><a href="controller.do?action=makeMove&cup=4"> 3 </a></div>
+                <div class="pitt" id="pb2"><a href="controller.do?action=makeMove&cup=5"> 4 </a></div>
+                <div class="pitt" id="pb1"><a href="controller.do?action=makeMove&cup=6"> 5 </a></div>
+            </div>
+
+        </div>
+
+        <div class="section endsection">
+            <div class="kalaha" id="mt"> 6 </div>
+        </div>
+    </div>
+
+
+
+    <br><br><br><br>
+    <div class="message"><a href="controller.do?action=init">klik hier om een nieuw spel te beginnen</a></div>
+    <br><br><br><br>
+
+
+</body>
+</html>
