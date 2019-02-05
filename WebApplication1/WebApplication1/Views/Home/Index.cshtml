@@ -3,21 +3,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>C# mancala mvc implementatie</h2>
 
 <body>
     <text>
-        hallo, dit is de index.cshtml pagina
         <br>
         <br>
         <br>
-        <asp:Button ID="playMancala" runat="server" onclick= @Html.ActionLink("start playing mancala dos", "Index", "playMancala") Start playing mancala </asp:Button>
-        <br />
-        <br />
-        <br />
-
-        @Html.ActionLink("start playing mancala dos", "playMancala", "playMancala");
-
+        @Html.ActionLink("start playing mancala", "playMancala", "playMancala");
+        <br>
+        <br>
+        <br>
         <br>
     </text>
 </body>

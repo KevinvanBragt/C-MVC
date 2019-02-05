@@ -40,10 +40,6 @@
     border-radius: 50px;
 }
 
-.message {
-    justify-content: center;
-}
-
 .bead {
     position: absolute;
     border-radius: 50%;
@@ -53,6 +49,7 @@
 
 .message {
     justify-content: center;
+    font-size: 250px;
 }
 
 .kalaha {

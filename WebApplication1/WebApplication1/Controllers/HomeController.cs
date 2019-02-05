@@ -12,11 +12,6 @@ namespace WebApplication1.Controllers
             return View();
         }
 
-        protected string playMancala(object sender, EventArgs e)
-        {
-            return "you requested to play mancala";
-        }
-
     }
 
 }

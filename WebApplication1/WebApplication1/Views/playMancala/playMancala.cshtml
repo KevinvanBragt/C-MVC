@@ -1,6 +1,8 @@
 ﻿
+@using WebApplication1.Controllers;
 @{
     ViewBag.Title = "playMancala";
+    int[] gameState = playMancalaController.fetchGameState();
 }
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -13,44 +15,48 @@
 </head>
 
 <body>
-    
+
+    <div class="message"> player @(gameState[14] * -1 + 2) it's your turn </div>
 
     <br><br><br><br>
     <div class="board">
+
         <div class="section endsection">
-            <div class="kalaha" id="mb"> 13 </div>
+            <div class="kalaha" id="mb"> pl1:  @gameState[6].ToString() </div>
         </div>
 
         <div class="section midsection">
             <div class="midrow topmid">
-                <div class="pitt" id="pt1"><a href="controller.do?action=makeMove&cup=13"> 12 </a></div>
-                <div class="pitt" id="pt2"><a href="controller.do?action=makeMove&cup=12"> 11 </a></div>
-                <div class="pitt" id="pt3"><a href="controller.do?action=makeMove&cup=11"> 10 </a></div>
-                <div class="pitt" id="pt4"><a href="controller.do?action=makeMove&cup=10"> 9 </a></div>
-                <div class="pitt" id="pt5"><a href="controller.do?action=makeMove&cup=9"> 8 </a></div>
-                <div class="pitt" id="pt6"><a href="controller.do?action=makeMove&cup=8"> 7 </a></div>
+                <div class="pitt" id="pt1">@Html.ActionLink(gameState[5].ToString(), "makeMove/13")  </a></div>
+                <div class="pitt" id="pt2">@Html.ActionLink(gameState[4].ToString(), "makeMove/12")  </a></div>
+                <div class="pitt" id="pt3">@Html.ActionLink(gameState[3].ToString(), "makeMove/11")  </a></div>
+                <div class="pitt" id="pt4">@Html.ActionLink(gameState[2].ToString(), "makeMove/10")  </a></div>
+                <div class="pitt" id="pt5">@Html.ActionLink(gameState[1].ToString(), "makeMove/9")   </a></div>
+                <div class="pitt" id="pt6">@Html.ActionLink(gameState[0].ToString(), "makeMove/8")   </a></div>
             </div>
 
             <div class="midrow botmid">
-                <div class="pitt" id="pb6"><a href="controller.do?action=makeMove&cup=1"> 0 </a></div>
-                <div class="pitt" id="pb5"><a href="controller.do?action=makeMove&cup=2"> 1 </a></div> 
-                <div class="pitt" id="pb4"><a href="controller.do?action=makeMove&cup=3"> 2 </a></div>
-                <div class="pitt" id="pb3"><a href="controller.do?action=makeMove&cup=4"> 3 </a></div>
-                <div class="pitt" id="pb2"><a href="controller.do?action=makeMove&cup=5"> 4 </a></div>
-                <div class="pitt" id="pb1"><a href="controller.do?action=makeMove&cup=6"> 5 </a></div>
+                <div class="pitt" id="pb6">@Html.ActionLink(gameState[7].ToString(), "makeMove/0")  </a></div>
+                <div class="pitt" id="pb5">@Html.ActionLink(gameState[8].ToString(), "makeMove/1")  </a></div>
+                <div class="pitt" id="pb4">@Html.ActionLink(gameState[9].ToString(), "makeMove/2")  </a></div>
+                <div class="pitt" id="pb3">@Html.ActionLink(gameState[10].ToString(), "makeMove/3") </a></div>
+                <div class="pitt" id="pb2">@Html.ActionLink(gameState[11].ToString(), "makeMove/4") </a></div>
+                <div class="pitt" id="pb1">@Html.ActionLink(gameState[12].ToString(), "makeMove/5") </a></div>
             </div>
 
         </div>
 
         <div class="section endsection">
-            <div class="kalaha" id="mt"> 6 </div>
+            <div class="kalaha" id="mt"> pl2: @gameState[13].ToString() </div>
         </div>
     </div>
 
 
 
     <br><br><br><br>
-    <div class="message"><a href="controller.do?action=init">klik hier om een nieuw spel te beginnen</a></div>
+    <div class="message">@Html.ActionLink("start new game", "newGame")</a></div>
+    <div class="message">@Html.ActionLink("save game", "saveGame")</a></div>
+    <div class="message">@Html.ActionLink("load game", "loadGame")</a></div>
     <br><br><br><br>
 
 
