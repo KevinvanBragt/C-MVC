@@ -1,14 +1,16 @@
-﻿using System.Web.Mvc;
+﻿using ServiceStack;
+using System.Web.Mvc;
 using System.Web.Services;
+using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
     public class playMancalaController : Controller
     {
+        private APIConnector apiConnector = new APIConnector();
 
         public playMancalaController()
         {
-            fetchResources();
             fetchSessionData();
             fetchGameState();
         }
@@ -28,14 +30,15 @@ namespace WebApplication1.Controllers
 
         public static int[] fetchGameState()
         {
-
             // fetch gamestate...
             return new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 1 };
         }
 
-        public void newGame()
+        public ViewResult newGame()
         {
-            //newgame code
+            apiConnector.createNewGame();
+            //returns an ID
+            return View("playmancala");
         }
 
         public void saveGame()
@@ -48,20 +51,9 @@ namespace WebApplication1.Controllers
 
         }
 
-        private void fetchResources()
-        {
-            //
-        }
-
         private void fetchSessionData()
         {
             //
-        }
-
-        private void APIConnector(string url)
-        {
-            var response = url.GetJsonFromUrl().
-
         }
 
     }
