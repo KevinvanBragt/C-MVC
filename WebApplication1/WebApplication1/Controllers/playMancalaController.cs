@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Services;
 using WebApplication1.Models;
+using RouteAttribute = ServiceStack.RouteAttribute;
 
 namespace WebApplication1.Controllers
 {
@@ -9,36 +10,31 @@ namespace WebApplication1.Controllers
     {
         private APIConnector apiConnector = new APIConnector();
 
-        public playMancalaController()
-        {
-            fetchSessionData();
-            fetchGameState();
-        }
-        
+        /**
+         *try: 
+         * public async viewResult playMancalaController()
+         * ViewData["gameState"] = async fetchGameState();
+         * return view();
+         **/
+
         // GET: playMancala
-        public ViewResult playMancala()
+        public ViewResult playMancala(int id)
         {
+            ViewData["gameState"] = fetchGameState(id);
+            ViewData["gameId"] = id;
             return View();
         }
 
-        // GET: makeMove()
-        public ViewResult makeMove(int id)
+        public ActionResult newGame()
         {
-            //code to make move
-            return View("playMancala");
+            int gameId = apiConnector.createNewGame();
+            return RedirectToAction("playMancala", "playMancala", new { id = gameId });
         }
 
-        public static int[] fetchGameState()
+        public ActionResult makeMove(int CollectionId, int unitId)
         {
-            // fetch gamestate...
-            return new int[] { 4, 4, 4, 4, 4, 4, 0, 4, 4, 4, 4, 4, 4, 0, 1 };
-        }
-
-        public ViewResult newGame()
-        {
-            apiConnector.createNewGame();
-            //returns an ID
-            return View("playmancala");
+            apiConnector.makeMove(CollectionId, unitId);
+            return RedirectToAction("playMancala", "playMancala", new { id = CollectionId });
         }
 
         public void saveGame()
@@ -51,9 +47,9 @@ namespace WebApplication1.Controllers
 
         }
 
-        private void fetchSessionData()
+        private int[] fetchGameState(int gameId)
         {
-            //
+            return apiConnector.fetchGameState(gameId);
         }
 
     }

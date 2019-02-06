@@ -1,8 +1,5 @@
 ﻿using ServiceStack;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace WebApplication1.Models
 {
@@ -11,14 +8,31 @@ namespace WebApplication1.Models
         //http://docs.servicestack.net/http-utils#parsing-custom-responses
 
         private UrlBuilder urlBuilder = new UrlBuilder();
-        private int sessionGameId;
+    
 
-        public void createNewGame()
+        public int createNewGame()
         {
             var response = UrlBuilder.getNewGameUrl().PostToUrl("");
-            System.Diagnostics.Debug.WriteLine(response.ToString());
-
+            int id = 0;
+            System.Diagnostics.Debug.WriteLine("created new game with id: " + response);
+            if (Int32.TryParse(response, out id)) { return id; }
+            else { throw new Exception(); }
         }
 
+        public int[] fetchGameState(int id)
+        {
+            var response = UrlBuilder.getGameStateUrl(id).GetJsonFromUrl();
+            int[] gameState = Newtonsoft.Json.JsonConvert.DeserializeObject<int[]>(response);
+            System.Diagnostics.Debug.WriteLine("gamestate fetched");
+            System.Diagnostics.Debug.WriteLine("gamestate[4] = " + gameState[4].ToString());
+            return gameState;
+        }
+
+        public void makeMove(int gameId, int cupId)
+        {
+            System.Diagnostics.Debug.WriteLine(UrlBuilder.getMakeMoveUrl(gameId, cupId));
+            var response = UrlBuilder.getMakeMoveUrl(gameId, cupId).PutToUrl("");
+            System.Diagnostics.Debug.WriteLine("request url: " + UrlBuilder.getMakeMoveUrl(gameId, cupId) + "      response: " +response);
+        }
     }
 }

@@ -33,7 +33,7 @@ namespace WebApplication1.Models
             return baseUrl + "/" + gameId;
         }
 
-        public static String getmakeMoveUrl(int gameId, int cupId)
+        public static String getMakeMoveUrl(int gameId, int cupId)
         {
             return baseUrl + "/" + gameId + "/cup/" + cupId;
         }

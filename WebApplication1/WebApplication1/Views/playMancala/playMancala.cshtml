@@ -2,7 +2,8 @@
 @using WebApplication1.Controllers;
 @{
     ViewBag.Title = "playMancala";
-    int[] gameState = playMancalaController.fetchGameState();
+    int[] gameState = (int[])ViewData["gameState"];
+    int gameId = (int)ViewData["gameId"];
 }
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -21,31 +22,36 @@
     <br><br><br><br>
     <div class="board">
 
+        <!-- player 1 kalaha-->
         <div class="section endsection">
             <div class="kalaha" id="mb"> pl1:  @gameState[6].ToString() </div>
         </div>
 
         <div class="section midsection">
+
+            <!-- player 1, from left to right-->
             <div class="midrow topmid">
-                <div class="pitt" id="pt1">@Html.ActionLink(gameState[5].ToString(), "makeMove/13")  </a></div>
-                <div class="pitt" id="pt2">@Html.ActionLink(gameState[4].ToString(), "makeMove/12")  </a></div>
-                <div class="pitt" id="pt3">@Html.ActionLink(gameState[3].ToString(), "makeMove/11")  </a></div>
-                <div class="pitt" id="pt4">@Html.ActionLink(gameState[2].ToString(), "makeMove/10")  </a></div>
-                <div class="pitt" id="pt5">@Html.ActionLink(gameState[1].ToString(), "makeMove/9")   </a></div>
-                <div class="pitt" id="pt6">@Html.ActionLink(gameState[0].ToString(), "makeMove/8")   </a></div>
+                <div class="pitt" id="pt1">@Html.ActionLink(gameState[5].ToString(), "makeMove/collection/" + gameId + "/unit/5")  </a></div>
+                <div class="pitt" id="pt2">@Html.ActionLink(gameState[4].ToString(), "makeMove/collection/" + gameId + "/unit/4") </a></div>
+                <div class="pitt" id="pt3">@Html.ActionLink(gameState[3].ToString(), "makeMove/collection/" + gameId + "/unit/3")  </a></div>
+                <div class="pitt" id="pt4">@Html.ActionLink(gameState[2].ToString(), "makeMove/collection/" + gameId + "/unit/2")  </a></div>
+                <div class="pitt" id="pt5">@Html.ActionLink(gameState[1].ToString(), "makeMove/collection/" + gameId + "/unit/1")   </a></div>
+                <div class="pitt" id="pt6">@Html.ActionLink(gameState[0].ToString(), "makeMove/collection/" + gameId + "/unit/0")   </a></div>
             </div>
 
+            <!-- player 2, from left to right-->
             <div class="midrow botmid">
-                <div class="pitt" id="pb6">@Html.ActionLink(gameState[7].ToString(), "makeMove/0")  </a></div>
-                <div class="pitt" id="pb5">@Html.ActionLink(gameState[8].ToString(), "makeMove/1")  </a></div>
-                <div class="pitt" id="pb4">@Html.ActionLink(gameState[9].ToString(), "makeMove/2")  </a></div>
-                <div class="pitt" id="pb3">@Html.ActionLink(gameState[10].ToString(), "makeMove/3") </a></div>
-                <div class="pitt" id="pb2">@Html.ActionLink(gameState[11].ToString(), "makeMove/4") </a></div>
-                <div class="pitt" id="pb1">@Html.ActionLink(gameState[12].ToString(), "makeMove/5") </a></div>
+                <div class="pitt" id="pb6">@Html.ActionLink(gameState[7].ToString(), "makeMove/collection/" + gameId + "/unit/7")  </a></div>
+                <div class="pitt" id="pb5">@Html.ActionLink(gameState[8].ToString(), "makeMove/collection/" + gameId + "/unit/8")  </a></div>
+                <div class="pitt" id="pb4">@Html.ActionLink(gameState[9].ToString(), "makeMove/collection/" + gameId + "/unit/9")  </a></div>
+                <div class="pitt" id="pb3">@Html.ActionLink(gameState[10].ToString(), "makeMove/collection/" + gameId + "/unit/10")  </a></div>
+                <div class="pitt" id="pb2">@Html.ActionLink(gameState[11].ToString(), "makeMove/collection/" + gameId + "/unit/11")  </a></div>
+                <div class="pitt" id="pb1">@Html.ActionLink(gameState[12].ToString(), "makeMove/collection/" + gameId + "/unit/12") </a></div>
             </div>
 
         </div>
 
+        <!-- player 2 kalaha-->
         <div class="section endsection">
             <div class="kalaha" id="mt"> pl2: @gameState[13].ToString() </div>
         </div>
