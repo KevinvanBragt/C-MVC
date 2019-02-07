@@ -23,16 +23,12 @@ namespace WebApplication1.Models
         {
             var response = UrlBuilder.getGameStateUrl(id).GetJsonFromUrl();
             int[] gameState = Newtonsoft.Json.JsonConvert.DeserializeObject<int[]>(response);
-            System.Diagnostics.Debug.WriteLine("gamestate fetched");
-            System.Diagnostics.Debug.WriteLine("gamestate[4] = " + gameState[4].ToString());
             return gameState;
         }
 
         public void makeMove(int gameId, int cupId)
         {
-            System.Diagnostics.Debug.WriteLine(UrlBuilder.getMakeMoveUrl(gameId, cupId));
             var response = UrlBuilder.getMakeMoveUrl(gameId, cupId).PutToUrl("");
-            System.Diagnostics.Debug.WriteLine("request url: " + UrlBuilder.getMakeMoveUrl(gameId, cupId) + "      response: " +response);
         }
     }
 }

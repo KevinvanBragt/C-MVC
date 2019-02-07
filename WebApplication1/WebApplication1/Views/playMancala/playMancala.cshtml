@@ -4,6 +4,27 @@
     ViewBag.Title = "playMancala";
     int[] gameState = (int[])ViewData["gameState"];
     int gameId = (int)ViewData["gameId"];
+    int playerHavingTurn = (gameState[14]);
+    Boolean gameHasWinner = (gameState[15] != 0);
+    String message = null;
+
+    if (gameHasWinner)
+    {
+        if (gameState[15] == -1)
+        {
+            message = "it's a draw!";
+        }
+        else if (gameState[15] == 2)
+        {
+            message = "player 2 has won!";
+        }
+        else if (gameState[15] == 1)
+        {
+            message = "player 1 has won!";
+        }
+    }
+    else { message = "player " + gameState[14] + " it's your turn"; }
+
 }
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -17,7 +38,7 @@
 
 <body>
 
-    <div class="message"> player @(gameState[14] * -1 + 2) it's your turn </div>
+    <div class="message"> @message </div>
 
     <br><br><br><br>
     <div class="board">

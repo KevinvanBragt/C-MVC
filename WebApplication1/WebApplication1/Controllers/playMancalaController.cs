@@ -10,12 +10,7 @@ namespace WebApplication1.Controllers
     {
         private APIConnector apiConnector = new APIConnector();
 
-        /**
-         *try: 
-         * public async viewResult playMancalaController()
-         * ViewData["gameState"] = async fetchGameState();
-         * return view();
-         **/
+        //mancala game ended and winner options
 
         // GET: playMancala
         public ViewResult playMancala(int id)
