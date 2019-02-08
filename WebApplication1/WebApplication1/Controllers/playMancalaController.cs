@@ -15,40 +15,30 @@ namespace WebApplication1.Controllers
          * 
          **/
 
-
         private APIConnector apiConnector = new APIConnector();
 
-
         [HttpGet]
-        public ViewResult playMancala(int id)
+        public ViewResult playMancala()
         {
-            int[] gameState = fetchGameState(id);
+            int gameId = (int)Session["gameId"];
+            ViewData["gameId"] = gameId;
+            int[] gameState = fetchGameState(gameId);
             ViewData["gameState"] = gameState;
             ViewData["viewMessage"] = getViewMessage(gameState);
-            //ViewData["gameId"] = id;
-            ViewData["gameId"] = Session["gameId"];                                                    //                     
             return View();
         }
 
         public ActionResult newGame()
         {
-            int gameId = apiConnector.createNewGame();
-            Session["gameId"] = gameId;                                                                 //
-            return RedirectToAction("playMancala", "playMancala", new { id = gameId });
+            Session["gameId"] = apiConnector.createNewGame();           
+            return RedirectToAction("playMancala", "playMancala");
         }
 
-        public ActionResult makeMove(int CollectionId, int unitId)
+        public ActionResult makeMove(int unitId)
         {
-            CollectionId = (int)(Session["gameId"]);                                                    //
-            System.Diagnostics.Debug.WriteLine("debugging session id: " + CollectionId);
-            apiConnector.makeMove(CollectionId, unitId);
-            return RedirectToAction("playMancala", "playMancala", new { id = CollectionId });
-        }
-
-        //session can be used for loading previous games.
-        public void loadGame()
-        {
-
+            int gameId = (int)(Session["gameId"]);                       
+            apiConnector.makeMove(gameId, unitId);
+            return RedirectToAction("playMancala", "playMancala");
         }
 
         private int[] fetchGameState(int gameId)

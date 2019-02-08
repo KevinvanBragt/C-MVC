@@ -21,8 +21,8 @@ namespace WebApplication1
 
             routes.MapRoute(
                 name: "withinCollection",
-                url: "{controller}/{action}/collection/{CollectionId}/unit/{unitId}",
-                defaults: new { controller = "Home", action = "Index", CollectionId = UrlParameter.Optional, unitId = UrlParameter.Optional }
+                url: "{controller}/{action}/collection/collectionid/unit/{unitId}",
+                defaults: new { controller = "playmancala", action = "makemove", unitId = UrlParameter.Optional }
             );
 
         }
