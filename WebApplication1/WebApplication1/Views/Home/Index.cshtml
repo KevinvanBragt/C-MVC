@@ -1,26 +1,49 @@
-﻿
+﻿@model WebApplication1.Models.FormModels.NameModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>C# mancala mvc implementatie</h2>
 
 <body>
     <text>
         <br>
         <br>
         <br>
-        @Html.ActionLink("start playing mancala", "newGame", "playMancala")
+        <div>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+            {
+            <table cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(m => m.player1, new { placeholder = "Player 1", @class = "form-input" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(m => m.player2, new { placeholder = "Player 2", @class = "form-input" })
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" value="start playing mancala" />
+                    </td>
+                </tr>
+            </table>
+            }
+
+
+
+
+
+
+
+            </div>
+        <br />
+        <br />
+        @Html.ActionLink("start playing mancala without names", "newGame", "playMancala")
         <br>
         <br>
         <br>
         <br>
     </text>
 </body>
-
-@section Scripts{
-    <script type="text/javascript">
-        //any javascript code you want
-        //try to make seperate js files, then load them up here
-    </script> 
-    }

@@ -4,9 +4,15 @@
     ViewBag.Title = "playMancala";
     int[] gameState = (int[])ViewData["gameState"];
     int gameId = (int)ViewData["gameId"];
+    String message = null;
+
+
+
+    //dit moet eigenlijk naar een setMessage methode in controller?
+    String player1 = (string)ViewData["namePlayer1"];
+    String player2 = (string)ViewData["namePlayer2"];
     int playerHavingTurn = (gameState[14]);
     Boolean gameHasWinner = (gameState[15] != 0);
-    String message = null;
 
     if (gameHasWinner)
     {
@@ -16,15 +22,23 @@
         }
         else if (gameState[15] == 2)
         {
-            message = "player 2 has won!";
+            message = player2 + " has won!";
         }
         else if (gameState[15] == 1)
         {
-            message = "player 1 has won!";
+            message = player1 + " has won!";
         }
     }
-    else { message = "player " + gameState[14] + " it's your turn"; }
-
+    else {
+        if (gameState[14] == 1)
+        {
+            message = player1 + " it's your turn";
+        }
+        else if (gameState[15] == 2)
+        {
+            message = player2 + " it's your turn";
+        }
+    }
 }
 
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -82,7 +96,6 @@
 
     <br><br><br><br>
     <div class="message">@Html.ActionLink("start new game", "newGame")</a></div>
-    <div class="message">@Html.ActionLink("save game", "saveGame")</a></div>
     <div class="message">@Html.ActionLink("load game", "loadGame")</a></div>
     <br><br><br><br>
 
